@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">DietLog</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Diary</string>
+    <string name="title_notifications">Me</string>
+    <string name="your_web_client_id">343785469439-4is83g6m1btd189o46fn010q7kmpq7v7.apps.googleusercontent.com</string>
+    <string name="sign_in_with_google">Sign in With Google</string>
+    <string name="calories">Calories</string>
+    <string name="carbohydrates_g">Carbohydrates (g)</string>
+    <string name="fat_g">Fat (g)</string>
+    <string name="sugars_g">Sugars (g)</string>
+    <string name="protein_g">Protein (g)</string>
+    <string name="full_name">Full Name</string>
+    <string name="height">Height (cm)</string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="sex">Sex</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="email">Email</string>
+    <string name="empty">-</string>
+    <string name="nutrients_remaining">Nutrients Remaining</string>
+    <string name="title_activity_add_food">AddFoodActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="snack">Snack</string>
+    <string name="name">Name</string>
+    <string name="serving_size_g">Serving Size(g)</string>
+    <string name="open_date_picker">open date picker</string>
+    <string name="date">Date</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="add_food">Add Food</string>
+    <string name="confirm_edit">confirm edit</string>
+    <string name="pick_a_date">Pick a Date</string>
+    <string name="scan_a_meal">scan a meal</string>
+    <string name="confirm">confirm</string>
+
+    <string-array name="time">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snack</item>
+    </string-array>
+</resources>

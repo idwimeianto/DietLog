@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "343785469439",
+    "project_id": "dietlog-b31ab",
+    "storage_bucket": "dietlog-b31ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343785469439:android:c2d3de0a23c45c9271a3ca",
+        "android_client_info": {
+          "package_name": "com.example.projectimam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343785469439-4is83g6m1btd189o46fn010q7kmpq7v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaS3KOxWwDux7sUB6ds7cgoR2V944NFug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343785469439-4is83g6m1btd189o46fn010q7kmpq7v7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
