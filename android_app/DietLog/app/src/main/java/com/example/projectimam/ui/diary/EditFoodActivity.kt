@@ -1,62 +1,36 @@
 package com.example.projectimam.ui.diary
 
 import android.annotation.SuppressLint
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import com.example.projectimam.DatePickerHelper
 import com.example.projectimam.R
 import com.example.projectimam.databinding.ActivityEditFoodBinding
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class EditFoodActivity : AppCompatActivity() {
 
     private lateinit var datePicker: DatePickerHelper
     private lateinit var binding: ActivityEditFoodBinding
-    private lateinit var foodTime: String
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private var selectedDate = Date()
-    private val db = Firebase.firestore
-    private lateinit var docsId: String
-
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditFoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         Toast.makeText(this, intent.getStringExtra("id"), Toast.LENGTH_SHORT).show()
-        docsId = intent.getStringExtra("id").toString()
 
         datePicker = DatePickerHelper(this)
 
         val time = resources.getStringArray(R.array.time)
 
         binding.apply {
-
-            db.collection("foods").document(docsId).get()
-                .addOnSuccessListener { document ->
-                    etEditCalories.setText(document.data?.get("calories").toString())
-                    etEditFat.setText(document.data?.get("fat").toString())
-                    etEditCarbo.setText(document.data?.get("carbohydrates").toString())
-                    etEditFoodName.setText(document.data?.get("name").toString())
-                    etEditProtein.setText(document.data?.get("protein").toString())
-                    etEditSugars.setText(document.data?.get("sugars").toString())
-                    etEditServingSize.setText(document.data?.get("size").toString())
-                }
-
             btnEditDate.setOnClickListener {
                 showDatePickerDialog()
             }
@@ -71,11 +45,11 @@ class EditFoodActivity : AppCompatActivity() {
                     parent: AdapterView<*>,
                     view: View, position: Int, id: Long
                 ) {
-                    foodTime = time[position]
+                    Toast.makeText(this@EditFoodActivity, time[position], Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
-                    foodTime = "Breakfast"
+                    // write code to perform some action
                 }
             }
         }
@@ -89,25 +63,9 @@ class EditFoodActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.edit_food_confirm -> {
-                val data = hashMapOf(
-                    "calories" to binding.etEditCalories.text.toString().toInt(),
-                    "carbohydrates" to binding.etEditCarbo.text.toString().toInt(),
-                    "date" to selectedDate,
-                    "fat" to binding.etEditFat.text.toString().toInt(),
-                    "name" to binding.etEditFoodName.text.toString(),
-                    "protein" to binding.etEditProtein.text.toString().toInt(),
-                    "size" to binding.etEditSugars.text.toString().toInt(),
-                    "sugars" to binding.etEditSugars.text.toString().toInt(),
-                    "times" to foodTime,
-                    "uid" to Firebase.auth.currentUser?.uid
-                )
-
-                db.collection("foods").document(docsId).set(data)
-                onBackPressed()
-            }
-            R.id.edit_food_delete -> Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+        when (item.itemId){
+            R.id.edit_food_confirm -> Toast.makeText(this,"Confirm",Toast.LENGTH_SHORT).show()
+            R.id.edit_food_delete -> Toast.makeText(this,"Delete",Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -125,7 +83,6 @@ class EditFoodActivity : AppCompatActivity() {
                 val mon = month + 1
                 val monthStr = if (mon < 10) "0$mon" else "$mon"
                 binding.btnEditDate.text = "${dayStr}-${monthStr}-${year}"
-                selectedDate = Date(year, mon, dayofMonth)
             }
         })
     }

@@ -3,6 +3,7 @@ package com.example.projectimam.ui.diary
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_dairy.*
+import kotlin.math.log
 
 
 class DiaryFragment : Fragment() {
@@ -31,7 +33,7 @@ class DiaryFragment : Fragment() {
         _binding = FragmentDairyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        setHasOptionsMenu(true)
+        setHasOptionsMenu(true);
 
         val breakfastFoods = mutableListOf<String>()
         val lunchFoods = mutableListOf<String>()
@@ -60,25 +62,25 @@ class DiaryFragment : Fragment() {
         foodsRef.get().addOnSuccessListener { documents ->
             for (document in documents) {
                 when (document.data["times"].toString()) {
-                    "Breakfast" -> {
+                    "breakfast" -> {
                         breakfastFoods.add(document.data["name"].toString())
                         breakfastCalories.add(document.data["calories"].toString())
                         breakfastTotalCalorie += document.data["calories"].toString().toInt()
                         breakfastId.add(document.id)
                     }
-                    "Lunch" -> {
+                    "lunch" -> {
                         lunchFoods.add(document.data["name"].toString())
                         lunchCalories.add(document.data["calories"].toString())
                         lunchTotalCalorie += document.data["calories"].toString().toInt()
                         lunchId.add(document.id)
                     }
-                    "Dinner" -> {
+                    "dinner" -> {
                         dinnerFoods.add(document.data["name"].toString())
                         dinnerCalories.add(document.data["calories"].toString())
                         dinnerTotalCalorie += document.data["calories"].toString().toInt()
                         dinnerId.add(document.id)
                     }
-                    "Snack" -> {
+                    "snack" -> {
                         snackFoods.add(document.data["name"].toString())
                         snackCalories.add(document.data["calories"].toString())
                         snackTotalCalorie += document.data["calories"].toString().toInt()
@@ -118,7 +120,7 @@ class DiaryFragment : Fragment() {
                 }
             }
 
-        }.addOnFailureListener {
+        }.addOnFailureListener { exception ->
             Toast.makeText(activity, "Error Fetch Food Data", Toast.LENGTH_SHORT).show()
         }
 
@@ -126,7 +128,7 @@ class DiaryFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.daily_menu, menu)
+        inflater.inflate(R.menu.daily_menu, menu);
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

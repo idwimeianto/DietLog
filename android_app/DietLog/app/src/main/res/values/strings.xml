@@ -41,7 +41,6 @@
     <string name="confirm_edit">confirm edit</string>
     <string name="pick_a_date">Pick a Date</string>
     <string name="scan_a_meal">scan a meal</string>
-    <string name="confirm">confirm</string>
 
     <string-array name="time">
         <item>Breakfast</item>
